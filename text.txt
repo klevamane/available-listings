@@ -1,0 +1,47 @@
+****
+create an applciation
+****
+1 . python manage.py startapp <app_name>
+2. Add PagesConfig from pages/apps in the listing settings apps area,
+    this enable the pages application to be recognized
+3. Create a urls.py in the pages app
+4. add -> to the listing / settings, in the 'DIRS' : []
+    'DIRS': [os.path.join(BASE_DIR, 'templates')], # tell the application where to find the template
+
+5. Add base_layout.html  to the template folder, this will be used to avoid repetition in certain areas of the pages (html)
+it can also be extended
+
+{% block content %} {% endblock%}
+is used as areas that can be dynamic
+
+
+6.  create a static folder in the application
+    copy the contents of the asset to the static folder
+##
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') # when deployed, the collectstatic command
+    # is used collects all static folders in all apps
+    # it takes them and puts them into the root static folder
+STATIC_URL = '/static/'
+# set the location of the static folder which has been created
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, 'listings/static')
+]
+
+# python manage.py help -> yoy can see that there is a command "collectstatic"
+this is used to collect every static folder in every app and create one into what ever has been defined as the
+STATIC_ROOT
+
+# Add the static folder in the .gitignore file
+# Add the static folder in 'listing/static'
+# python manage.py collectstatic # to create the static folder in the root
+
+8. copy the content of the html resources and replace the layout in the templates folder
+Ensure to add the {% load static %} at the top of the html file
+this allows the html file to have access to the static data
+this references what ever the static folder is, that is defined in the settings (listing/settings)
+
+
+9. change the links to correspond to the resources via the static
+    eg
+        href="{%static 'css/bootstrap.css' %}">
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>

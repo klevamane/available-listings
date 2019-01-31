@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'pages.apps.PagesConfig', # add the pages application here
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,7 +55,8 @@ ROOT_URLCONF = 'listings.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # update the link to the directory to be used as the template
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,4 +119,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')# when deployed, the collectstatic command
+    # is used collects all static folders in all apps
+    # it takes them and puts them into the root static folder
+    # This is where static files are being looked for when the app is deployed
 STATIC_URL = '/static/'
+# set the location of the static folder which has been created
+
+# set the location where the collectstatic command will look for the static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'listings/static')
+]
+
