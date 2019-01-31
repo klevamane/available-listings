@@ -45,3 +45,7 @@ this references what ever the static folder is, that is defined in the settings 
     eg
         href="{%static 'css/bootstrap.css' %}">
         <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+10. update the base_layout.html with the theme file
+    by adding sections of the theme html that will be used in multiple files
+    sections like footer, navigation etc
