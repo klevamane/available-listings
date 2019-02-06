@@ -57,3 +57,40 @@ this references what ever the static folder is, that is defined in the settings 
 13.
     # index here is for the index page which is routed in the urlpatterns in settings.py
     update the link on the breadcrumb to be href="{% url 'index' '%}"
+
+14.
+    resolve the implementation of making a link "active" when the endpoint / url is accessed
+ <ul>
+     {% with url_name=request.resolver_match.url_name %}
+               <li class="nav-item {% if url_name == 'index' %}active{% endif %}">
+                  <a class="nav-link" href="{% url 'index' %}">Home</a>
+              </li>
+              <li class="nav-item {% if url_name == 'about' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'about' %}">About</a>
+              </li>
+     {% endwith %}
+ </ul>
+
+ 15.
+    Add two apps
+    # python manage.py startapp listings_ad
+    - listings_ad # for listings
+
+    # python manage.py startapp listings_agents
+    - listings_agents # for agents
+
+  16.
+    create a url.py file in the listing_ad folder
+    this should be similar to what is in the pages application
+    this will enable access to the listings application
+
+
+  20.
+       <!--routes back to the index page-->
+            <a href="{% url 'index' %}">
+
+       remember that the index was given to the index page of the pages app
+       ie
+       pages/urls.py
+        urlpatterns = [
+            path('', views.index, name='index'),

@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'pages.apps.PagesConfig', # add the pages application here
+    'listings_ad.apps.ListingsAdConfig', # Add listings_add app here
+    'listings_agents.apps.ListingsAgentsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
