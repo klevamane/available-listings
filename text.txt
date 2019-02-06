@@ -94,3 +94,21 @@ this references what ever the static folder is, that is defined in the settings 
        pages/urls.py
         urlpatterns = [
             path('', views.index, name='index'),
+
+  21. Install postgress drivers (packages)
+        psycopg2, psycopg2-binary
+
+  22. Setup the database in available_listings/listings/settings.py and update the Database section
+
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'available_listings',
+        'USER': 'user',
+        'PASSWORD': 'user',
+        'HOST': 'localhost',
+    }
+}
+
+23. Run the pending default migrations (15 migrations)
+    - python manage.py migrate #
