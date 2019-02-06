@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import datetime as dt
-from listings_agents.models import Agents
+from listings_agents.models import Agent
 
 # Create your models here.
 
@@ -11,7 +11,7 @@ class Listing(models.Model):
     address = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
     state = models.CharField(max_length=100)
-    description = models.CharField(blank=True)
+    description = models.TextField(blank=True)
     price = models.CharField(max_length=200)
     bedrooms = models.IntegerField()
     bathrooms = models.IntegerField()

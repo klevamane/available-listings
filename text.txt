@@ -112,3 +112,23 @@ this references what ever the static folder is, that is defined in the settings 
 
 23. Run the pending default migrations (15 migrations)
     - python manage.py migrate #
+
+24. Create the listing model
+    in listings_ad/models.py add listing class (model)
+25. Create the agent Model
+26. Make migration files
+    In order to make the migrations file we would make use of the command
+    python manage.py makemigrations #
+    # not that this will need Pillow pip package to be installed first
+    # because I made use of the ImageField in the models
+
+   in order to make specific migration file(s) migration
+
+    python manage.py makemigrations <app_name>
+
+27. To view what the sql statement that will be auto generated and used will look like,
+    we would make use of
+    python manage.py sqlmigrate listings_ad 0001
+
+28. Migrate the changes to the database
+    python manage.py migrate
