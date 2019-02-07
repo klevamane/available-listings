@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('', include('pages.urls')),
     path('listings/', include('listings_ad.urls')),
     path('admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, docuement_root=settings.MEDIA_ROOT) # do this to enable the media show up correcly in the front end

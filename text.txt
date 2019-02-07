@@ -132,3 +132,46 @@ this references what ever the static folder is, that is defined in the settings 
 
 28. Migrate the changes to the database
     python manage.py migrate
+
+29. Create a super user (Admin user)
+        check help with "python manage.py help" you can see the "createsuperuser" command
+        -
+        python manage.py createsuperuser
+        enter email
+        enter password
+
+30 . Register models in admin section for each application
+    eg. available_listings/listings_ad(theapp)/admin.py
+      register the model there
+      this will enable the admin to be able to perform CRUD operations on the model from
+      localhost:8000/admin or thesite/admin
+      note that you must register models in each app if you want them to be shown in the admin section
+
+      - available_listings/listings_ad(theapp)/admin.py
+      - import the model from the models of the application
+      - register the model
+        admin.site.register(model_name)
+      - go to /admin and you will see the model has been added to the admin section
+
+    Register the Agent model in the admin.py of the listing_agent app
+
+31. Media folder
+    in the base application, listings
+    - settings.py
+
+    - Add the Media Folder settings
+    # Media Folder Settings
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    MEDIA_URL = '/media/'
+
+ 32. inorder to show the media
+    in listings/urls.py append with + the MEDIA locations from the settings.py
+
+    ] + static(settings.MEDIA_URL, docuement_root=settings.MEDIA_ROOT)
+    # this enables the media files to show up in the front end
+
+ 33. After configuring the media path ie (31 & 32) it creates a media folder in the root of the application
+        When media (photos) files are added in the application by the admin,
+        it saves the photos in available_listings/media/photos/year/month/day
+        This is similar to how we configured the media to be saved in the models
+        photo = models.ImageField(upload_to='photos/%Y/%m/%d')

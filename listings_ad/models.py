@@ -26,5 +26,5 @@ class Listing(models.Model):
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=dt.now, blank=True)
 
-    def __self__(self):
+    def __str__(self):
         return self.title
