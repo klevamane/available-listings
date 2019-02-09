@@ -1,0 +1,19 @@
+<!--note that the name of this file must be base_site.html-->
+<!--in order to customize the admin section we must extend admin/base.html-->
+<!--even though it doesn't exist anywhere or we cant see it-->
+{% extends 'admin/base.html' %}
+
+<!--because we need to make use of the static files-->
+{% load static %}
+
+<!--for the logo-->
+{% block branding %}
+<h1 id="head">
+    Availaible Listings
+</h1>
+{% endblock %}
+<!--end of log part-->
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock %}

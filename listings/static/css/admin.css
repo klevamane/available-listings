@@ -1,0 +1,28 @@
+/** Details of how to update the css of the admin section was gotten by inspecting the dom on google chrome **/
+
+#header {
+    height: 50px;
+    background: #10284e;
+    color: #fff
+}
+
+#branding h1 {
+    color: #fff
+}
+
+a:link,
+a:visited {
+    color: #10284e;
+}
+
+div.breadcrumbs {
+    background: #30caa0;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background: #30caa0;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #10284e;
+}

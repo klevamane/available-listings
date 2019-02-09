@@ -1,6 +1,14 @@
+I would like to give nomenclature to folder
+available_listings -> this is the base project folder
+            listings -> this is the base application / app folder
+                listings_ad -> subsequent app
+                listing_agents -> subsequent app
+
 ****
 create an applciation
 ****
+django-admin startproject <name_of_project>
+
 1 . python manage.py startapp <app_name>
 2. Add PagesConfig from pages/apps in the listing settings apps area,
     this enable the pages application to be recognized
@@ -175,3 +183,15 @@ this references what ever the static folder is, that is defined in the settings 
         it saves the photos in available_listings/media/photos/year/month/day
         This is similar to how we configured the media to be saved in the models
         photo = models.ImageField(upload_to='photos/%Y/%m/%d')
+
+
+35 . ***** Changing the look and feel of the admin template ******
+    - in templates folder
+    - create a folder "admin"
+    - create a base_site.html file in the folder
+    - extend admin/base.html
+    - add admin.css in listings/static/css/admin.css, ie in the base application folder folder, not the base project folder
+    - add css
+    - the ids and classes etc to be edited were known by inspecting the admin page on chrome to see the documents / dom
+        elements
+    -
