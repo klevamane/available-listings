@@ -195,3 +195,23 @@ this references what ever the static folder is, that is defined in the settings 
     - the ids and classes etc to be edited were known by inspecting the admin page on chrome to see the documents / dom
         elements
     -
+
+36. Update the admin functionality for each model
+    Remember that models belongs to various app
+    for instance the Agent model belongs to the listing_agent app
+    and the Listing model belongs to the listing app
+    an app can have mulitple models
+
+    But as long as that app/model has been registered to the admin
+    its model can be accessed in the /admin page
+    This is where we want to customize its functionality
+
+    - listings_ad /admin.py
+    - create a class with an arbitrary name eg "ListingAdmin"
+    - the class must inherit admin.Modeladmin
+    - remeber to add the class as part of
+        admin.site.register(ClassName, register_it_here)
+    - update the class with the requirements to be included
+      like, list_filter, search, list_likns etc
+
+37. Do the same for the agent class
