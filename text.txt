@@ -1,3 +1,9 @@
+#######
+NOTES
+######
+- Remember when a new app is created it doesn't come with the urls.py file, except the first app created with the project
+
+
 I would like to give nomenclature to folder
 available_listings -> this is the base project folder
             listings -> this is the base application / app folder
@@ -19,7 +25,7 @@ django-admin startproject <name_of_project>
 5. Add base_layout.html  to the template folder, this will be used to avoid repetition in certain areas of the pages (html)
 it can also be extended
 
-{% block content %} {% endblock%}
+{% block content %} {% endblock %}
 is used as areas that can be dynamic
 
 
@@ -236,3 +242,12 @@ this references what ever the static folder is, that is defined in the settings 
 
 41. Add pagination to listings page
     using the django pajinator, you can read the docs for more info
+
+
+50. Implement searching by city, state, bedrooms and keyword
+
+51. Implement authentication
+      -  create a new app called accounts # python manage.py startapp accounts
+      -  create url.py in it
+      -  add the app to the list of installed apps in the settings.py file ie
+            listings/settings.py

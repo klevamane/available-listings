@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig', # add the pages application here
     'listings_ad.apps.ListingsAdConfig', # Add listings_add app here
     'listings_agents.apps.ListingsAgentsConfig',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -140,3 +141,9 @@ STATICFILES_DIRS = [
 # Media Folder Settings
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.INFO: '',
+    50: 'critical',
+}
