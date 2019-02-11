@@ -236,3 +236,7 @@ this references what ever the static folder is, that is defined in the settings 
 
 41. Add pagination to listings page
     using the django pajinator, you can read the docs for more info
+
+
+50. Implement searching by city, state, bedrooms and keyword
+51.
