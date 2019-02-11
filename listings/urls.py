@@ -23,4 +23,4 @@ urlpatterns = [
     path('', include('pages.urls')),
     path('listings/', include('listings_ad.urls')),
     path('admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, docuement_root=settings.MEDIA_ROOT) # do this to enable the media show up correcly in the front end
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # do this to enable the media show up correcly in the front end

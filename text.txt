@@ -215,3 +215,24 @@ this references what ever the static folder is, that is defined in the settings 
       like, list_filter, search, list_likns etc
 
 37. Do the same for the agent class
+
+38. Update the html page (listing.html)
+    also note that the images are showing due to the earlier configuration made in 31 - 33
+    the image can also be gotten as a url
+    eg -  http://127.0.0.1:8000/media/photos/yyyy/mm/dd/imageName.jpg
+
+39. Add humanize to the base app settings.py (int the installed apps)
+    ie listings/settings.py
+            installed_apps = [django.contrib.humanize]
+
+40. use the Intcomma feature of humanize to add comma to the value of the price of the flat
+    note that humanize has other feature, check the documentation for more
+
+    in the layout page ie listings.html
+    {% load humanize %}
+    view the docs for more details
+    remember to always pipe the output with the required humanize filter.
+    ie {{listings.price | intcomma }}
+
+41. Add pagination to listings page
+    using the django pajinator, you can read the docs for more info
