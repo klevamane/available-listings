@@ -1,6 +1,14 @@
+I would like to give nomenclature to folder
+available_listings -> this is the base project folder
+            listings -> this is the base application / app folder
+                listings_ad -> subsequent app
+                listing_agents -> subsequent app
+
 ****
 create an applciation
 ****
+django-admin startproject <name_of_project>
+
 1 . python manage.py startapp <app_name>
 2. Add PagesConfig from pages/apps in the listing settings apps area,
     this enable the pages application to be recognized
@@ -132,3 +140,99 @@ this references what ever the static folder is, that is defined in the settings 
 
 28. Migrate the changes to the database
     python manage.py migrate
+
+29. Create a super user (Admin user)
+        check help with "python manage.py help" you can see the "createsuperuser" command
+        -
+        python manage.py createsuperuser
+        enter email
+        enter password
+
+30 . Register models in admin section for each application
+    eg. available_listings/listings_ad(theapp)/admin.py
+      register the model there
+      this will enable the admin to be able to perform CRUD operations on the model from
+      localhost:8000/admin or thesite/admin
+      note that you must register models in each app if you want them to be shown in the admin section
+
+      - available_listings/listings_ad(theapp)/admin.py
+      - import the model from the models of the application
+      - register the model
+        admin.site.register(model_name)
+      - go to /admin and you will see the model has been added to the admin section
+
+    Register the Agent model in the admin.py of the listing_agent app
+
+31. Media folder
+    in the base application, listings
+    - settings.py
+
+    - Add the Media Folder settings
+    # Media Folder Settings
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    MEDIA_URL = '/media/'
+
+ 32. inorder to show the media
+    in listings/urls.py append with + the MEDIA locations from the settings.py
+
+    ] + static(settings.MEDIA_URL, docuement_root=settings.MEDIA_ROOT)
+    # this enables the media files to show up in the front end
+
+ 33. After configuring the media path ie (31 & 32) it creates a media folder in the root of the application
+        When media (photos) files are added in the application by the admin,
+        it saves the photos in available_listings/media/photos/year/month/day
+        This is similar to how we configured the media to be saved in the models
+        photo = models.ImageField(upload_to='photos/%Y/%m/%d')
+
+
+35 . ***** Changing the look and feel of the admin template ******
+    - in templates folder
+    - create a folder "admin"
+    - create a base_site.html file in the folder
+    - extend admin/base.html
+    - add admin.css in listings/static/css/admin.css, ie in the base application folder folder, not the base project folder
+    - add css
+    - the ids and classes etc to be edited were known by inspecting the admin page on chrome to see the documents / dom
+        elements
+    -
+
+36. Update the admin functionality for each model
+    Remember that models belongs to various app
+    for instance the Agent model belongs to the listing_agent app
+    and the Listing model belongs to the listing app
+    an app can have mulitple models
+
+    But as long as that app/model has been registered to the admin
+    its model can be accessed in the /admin page
+    This is where we want to customize its functionality
+
+    - listings_ad /admin.py
+    - create a class with an arbitrary name eg "ListingAdmin"
+    - the class must inherit admin.Modeladmin
+    - remeber to add the class as part of
+        admin.site.register(ClassName, register_it_here)
+    - update the class with the requirements to be included
+      like, list_filter, search, list_likns etc
+
+37. Do the same for the agent class
+
+38. Update the html page (listing.html)
+    also note that the images are showing due to the earlier configuration made in 31 - 33
+    the image can also be gotten as a url
+    eg -  http://127.0.0.1:8000/media/photos/yyyy/mm/dd/imageName.jpg
+
+39. Add humanize to the base app settings.py (int the installed apps)
+    ie listings/settings.py
+            installed_apps = [django.contrib.humanize]
+
+40. use the Intcomma feature of humanize to add comma to the value of the price of the flat
+    note that humanize has other feature, check the documentation for more
+
+    in the layout page ie listings.html
+    {% load humanize %}
+    view the docs for more details
+    remember to always pipe the output with the required humanize filter.
+    ie {{listings.price | intcomma }}
+
+41. Add pagination to listings page
+    using the django pajinator, you can read the docs for more info

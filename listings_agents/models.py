@@ -14,6 +14,6 @@ class Agent(models.Model):
     photo = models.ImageField(upload_to='photos/%Y/%m/%d')
     hire_date = models.DateTimeField(default=dt.now, blank=True)
 
-    def __self__(self):
+    def __str__(self):
         return self.name
 
