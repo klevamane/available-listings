@@ -25,7 +25,7 @@ Admin user
 * Create a folder location in your computer eg my/path/
 * cd my/path/
 * git clone repositorylink.git
-* cd maintenance-tr
+* cd available-listings
 * pip install
 * python manage.py runserver
 
